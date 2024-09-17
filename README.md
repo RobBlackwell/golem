@@ -194,7 +194,7 @@ The prompts.jsonl file is expected to have id and messages fields, e.g.:
 
 A more comprehensive example based on these kinds of questions is included in the example directory.
 
-#### Repeats
+### Repeats
 
 Suppose you want to repeat an experiment ten times to assess variability:
 
@@ -202,7 +202,7 @@ Suppose you want to repeat an experiment ten times to assess variability:
 ~/git/golem/golem.py --provider azure --model gpt-35-turbo-0125 --repeat "0:10"  -f prompts.jsonl > answers.jsonl
 ```
 
-#### Varying temperature
+### Varying temperature
 
 Suppose you want to vary `temperature` from 0.0 to 1.0 in steps of 0.2.
 
@@ -212,6 +212,23 @@ Suppose you want to vary `temperature` from 0.0 to 1.0 in steps of 0.2.
 
 You can also vary `top_p` similarly and combine these options with
 `repeat`.
+
+### Getting help
+
+Additional help and documentation can be found by typing:
+
+``` bash
+golem -h
+```
+
+### Bugs
+
+If you encounter a bug, please report it as a GitHub issue. It can be useful to include detailed
+debugging information by using the verbose flag, e.g.:
+
+``` bash
+golem -v "Why is the sky blue"
+```
 
 ## FAQ
 
