@@ -1,0 +1,4 @@
+{{"id": "{line["id"]}",
+ "messages": [
+     {{"role": "user",
+      "content": "{line["question"]}"}}]}}

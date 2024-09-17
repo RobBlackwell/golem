@@ -1,0 +1,46 @@
+id|question|correctAnswer|answer|repeat|temperature|cleanAnswer|score
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You would be facing north.### Answer: North|0|0.0|North|1.0
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You would be facing north.### Answer: North|0|0.5|North|1.0
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You would be facing north. ### Answer: North|0|1.0|North|1.0
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You would be facing north.### Answer: North|1|0.0|North|1.0
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You would be facing north. ### Answer: North|1|0.5|North|1.0
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You would be facing north.### Answer: North|1|1.0|North|1.0
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You would be facing north.### Answer: North|2|0.0|North|1.0
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You are facing north.### Answer: North|2|0.5|North|1.0
+1|If a storm is moving from north to south and you are facing the storm, which directions are you facing?|north|You are facing north.### Answer: North|2|1.0|North|1.0
+2|If you are watching the sun rise, which direction are you facing?|east|### Answer:East|0|0.0|East|1.0
+2|If you are watching the sun rise, which direction are you facing?|east|East### Answer: East|0|0.5|East|1.0
+2|If you are watching the sun rise, which direction are you facing?|east|### Answer:You are facing east.|0|1.0|You are facing east.|0.0
+2|If you are watching the sun rise, which direction are you facing?|east|### Answer:East|1|0.0|East|1.0
+2|If you are watching the sun rise, which direction are you facing?|east|### Answer: East|1|0.5|East|1.0
+2|If you are watching the sun rise, which direction are you facing?|east|### Answer:East|1|1.0|East|1.0
+2|If you are watching the sun rise, which direction are you facing?|east|East### Answer: East|2|0.0|East|1.0
+2|If you are watching the sun rise, which direction are you facing?|east|### Answer:East|2|0.5|East|1.0
+2|If you are watching the sun rise, which direction are you facing?|east|### Answer:East|2|1.0|East|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: South|0|0.0|South|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: South|0|0.5|South|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: south|0|1.0|south|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: South|1|0.0|South|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: South|1|0.5|South|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: South|1|1.0|South|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: South|2|0.0|South|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: South|2|0.5|South|1.0
+3|You start by facing north and turn 180 degrees. Which direction are you facing now?|south|180 degrees from north is south.### Answer: South|2|1.0|South|1.0
+4|What direction is the United States from Mexico?|north|South### Answer: South|0|0.0|South|0.0
+4|What direction is the United States from Mexico?|north|South### Answer: South|0|0.5|South|0.0
+4|What direction is the United States from Mexico?|north|The United States is north of Mexico.### Answer: north|0|1.0|north|1.0
+4|What direction is the United States from Mexico?|north|The United States is north of Mexico.### Answer: North|1|0.0|North|1.0
+4|What direction is the United States from Mexico?|north|The United States is north of Mexico.### Answer: north|1|0.5|north|1.0
+4|What direction is the United States from Mexico?|north|Mexico is south of the United States.### Answer: South|1|1.0|South|0.0
+4|What direction is the United States from Mexico?|north|South### Answer: South|2|0.0|South|0.0
+4|What direction is the United States from Mexico?|north|The United States is north of Mexico.### Answer: north|2|0.5|north|1.0
+4|What direction is the United States from Mexico?|north|The United States is north of Mexico.### Answer: north|2|1.0|north|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|You would be facing south.### Answer: south|0|0.0|south|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|South### Answer: South|0|0.5|South|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|You would be facing south.### Answer: South|0|1.0|South|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|You would be facing south.### Answer: south|1|0.0|south|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|South### Answer: South|1|0.5|South|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|You would be facing south. ### Answer: South|1|1.0|South|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|You would be facing south.### Answer: south|2|0.0|south|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|South### Answer: South|2|0.5|South|1.0
+5|If you are in the northern hemisphere facing the equator, which direction are you facing?|south|South### Answer: South|2|1.0|South|1.0

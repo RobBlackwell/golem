@@ -1,0 +1,1 @@
+You are a helpful assistant. I will give you a question about directions. The answer is either north, south, east, or west. Answer the question and provide the final answer in the form: "### Answer:"
