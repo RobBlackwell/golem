@@ -7,16 +7,9 @@ Google Vertex support for Golem
 import subprocess
 import json
 
-from util import http_request, fatal, lookup_variable
+from util import http_request, fatal, lookup_variable, UnauthorizedException
 
 API_KEY_CACHE = None  # API key cache
-
-
-class UnauthorizedException(Exception):
-    """
-    Allow an API call to throw an unauthorised exception so that
-    it can be caught and re-authorised if possible. E.g. Google.
-    """
 
 
 def get_google_token():
