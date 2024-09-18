@@ -5,7 +5,6 @@ Golem utilities
 from datetime import datetime, timezone
 from decimal import Decimal
 from http import HTTPStatus
-import json
 import logging
 import os
 import random
