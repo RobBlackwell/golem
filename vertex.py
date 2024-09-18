@@ -5,6 +5,7 @@ Google Vertex support for Golem
 # pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals, global-statement
 
 import subprocess
+import logging
 
 from util import http_request, fatal, lookup_variable, UnauthorizedException
 
@@ -76,20 +77,25 @@ def ask_google(model, messages, temperature, seed, top_p, max_tokens):
 
     json_data = {
         "contents": messages2,
-        "systemInstruction": {"parts": [{"text": system}]},
-        "generationConfig": {},
     }
 
+    if system:
+        json_data["systemInstruction"] = {"parts": [{"text": system}]}
+
     if max_tokens is not None:
+        json_data.setdefault("generationConfig", {})
         json_data["generationConfig"]["maxOutputTokens"] = max_tokens
 
     if seed is not None:
+        json_data.setdefault("generationConfig", {})
         json_data["generationConfig"]["seed"] = seed
 
     if top_p is not None:
+        json_data.setdefault("generationConfig", {})
         json_data["generationConfig"]["topP"] = top_p
 
     if temperature is not None:
+        json_data.setdefault("generationConfig", {})
         json_data["generationConfig"]["temperature"] = temperature
 
     url = (
@@ -105,6 +111,7 @@ def ask_google(model, messages, temperature, seed, top_p, max_tokens):
 
     try:
         try:
+            logging.debug(json_data)
             request, response = http_request(url, headers, json_data)
         except UnauthorizedException:
             # Re-authenticate and try again
