@@ -111,7 +111,7 @@ def ask_google(model, messages, temperature, seed, top_p, max_tokens):
             # Re-authenticate and try again
             API_KEY_CACHE = get_google_token()
             headers["Authorization"] = f"Bearer {API_KEY_CACHE}"
-            request, response = http_request(url, headers, json)
+            request, response = http_request(url, headers, json_data)
 
         response = response.json()
         answer = response["candidates"][0]["content"]["parts"][0]["text"]
