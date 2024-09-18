@@ -233,7 +233,7 @@ def http_request(url, headers, json_data, retry=0):
                     retry,
                 )
             time.sleep(d)
-            _, response = http_request(url, headers, json, retry)
+            _, response = http_request(url, headers, json_data, retry)
     elif response.status_code == HTTPStatus.OK:
         pass
     elif response.status_code == HTTPStatus.UNAUTHORIZED:
