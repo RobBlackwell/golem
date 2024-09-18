@@ -5,7 +5,6 @@ Google Vertex support for Golem
 # pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals, global-statement
 
 import subprocess
-import json
 
 from util import http_request, fatal, lookup_variable, UnauthorizedException
 
