@@ -174,9 +174,10 @@ def is_gateway_error(response):
     Return True if response implies bad or overloaded gateway.
     """
     # 502 BAD_GATEWAY.
+    # 503 Service Unavailable e.g., seen on Google Vertex
     # 524 e.g.,Cloudflare timeout
     # 529 e.g,Anthropic overloaded
-    return response.status_code in (HTTPStatus.BAD_GATEWAY, 524, 529)
+    return response.status_code in (HTTPStatus.BAD_GATEWAY, 503, 524, 529)
 
 
 def is_continuable_error(response):
