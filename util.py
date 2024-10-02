@@ -223,13 +223,13 @@ def http_request(url, headers, json_data, retry=0):
             retry += 1
             d = exponential_backoff(retry)
             if response is None:
-                logging.info("Sleeping %s s, before retry %s", d, retry)
+                logging.info("Sleeping %s s, before retry %s", int(d), retry)
             else:
                 logging.info(
                     "%s:%s Sleeping %s s, before retry %s",
                     response.status_code,
                     response.text,
-                    d,
+                    int(d),
                     retry,
                 )
             time.sleep(d)
