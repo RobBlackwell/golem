@@ -270,11 +270,15 @@ processor. Golem uses HTTP REST APIs directly rather than Python
 libraries. Golem is easier to hack on and trace for one-off
 experiments.
 
-# References
+## References
 
 Burnell, R., et al., 2023. Rethink reporting of evaluation results in
 AI. Science, 380(6641),
 pp.136-138.(https://doi.org/10.1126/science.adf6369)
+
+Blackwell, R.E., Barry, J. and Cohn, A.G., 2024. Towards Reproducible
+LLM Evaluation: Quantifying Uncertainty in LLM Benchmark Scores. arXiv
+preprint https://arxiv.org/abs/2410.03492
 
 Cohn, A.G. and Blackwell, R.E., 2024. Evaluating the Ability of Large
 Language Models to Reason About Cardinal Directions (Short Paper). In
