@@ -270,6 +270,12 @@ processor. Golem uses HTTP REST APIs directly rather than Python
 libraries. Golem is easier to hack on and trace for one-off
 experiments.
 
+## Referencing this work
+
+Blackwell, R.E. and Cohn, A.G., 2024. Golem - a command line interface
+for benchmarking Large Language Models. Zenodo,
+https://doi.org/10.5281/zenodo.14035711 .
+
 ## References
 
 Burnell, R., et al., 2023. Rethink reporting of evaluation results in
