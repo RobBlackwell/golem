@@ -2,7 +2,7 @@
 Ollama support
 """
 
-# pylint: disable=too-many-arguments, broad-exception-caught
+# pylint: disable=too-many-arguments, too-many-positional-arguments, broad-exception-caught
 
 from util import fatal, http_request
 
