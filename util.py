@@ -209,6 +209,13 @@ def http_request(url, headers, json_data, retry=0):
 
     try:
         response = session.post(url, headers=headers, json=json_data)
+        logging.debug(
+            "http_response: {{status_code: %s, headers: %s, text: %s}}",
+            response.status_code,
+            response.headers,
+            response.text,
+        )
+
     except RequestException as e:
         response = None
         logging.warning("Exception: %s", e)
