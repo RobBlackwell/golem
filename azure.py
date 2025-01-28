@@ -13,7 +13,8 @@ from util import http_request, fatal, lookup_variable
 # For API_VERSION, see
 # https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#api-specs
 
-API_VERSION = "2024-06-01"  # GA
+# API_VERSION = "2024-10-01"  # GA
+API_VERSION = "2024-12-01-preview"
 
 
 def ask_azure(
