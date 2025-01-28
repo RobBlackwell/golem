@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2025-01-27 20:47:50 rblackwell>
+# Time-stamp: <2025-01-28 16:02:52 rblackwell>
 
 """Golem
 
@@ -135,6 +135,32 @@ def ask(
 
         if key is None:
             key = lookup_variable("DEEPSEEK_API_KEY")
+
+        # API is OpenAI compatible
+        return ask_openai(
+            provider,
+            model,
+            url,
+            key,
+            messages,
+            temperature,
+            seed,
+            top_p,
+            max_tokens,
+            logprobs,
+            top_logprobs,
+        )
+
+    if provider == "xai":
+        if model is None:
+            # https://docs.x.ai/docs/models?cluster=us-east-1#model-aliases
+            model = "grok-2-1212"  # Default
+
+        if url is None:
+            url = lookup_variable("XAI_ENDPOINT")
+
+        if key is None:
+            key = lookup_variable("XAI_API_KEY")
 
         # API is OpenAI compatible
         return ask_openai(
