@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2025-01-10 13:46:35 rblackwell>
+# Time-stamp: <2025-01-27 20:47:50 rblackwell>
 
 """Golem
 
@@ -33,6 +33,7 @@ from util import (
     ensure_json_serializable,
     parse_list,
     add_system_message,
+    lookup_variable,
 )
 
 from ollama import ask_ollama
@@ -111,6 +112,33 @@ def ask(
 
     if provider == "openai":
         return ask_openai(
+            provider,
+            model,
+            url,
+            key,
+            messages,
+            temperature,
+            seed,
+            top_p,
+            max_tokens,
+            logprobs,
+            top_logprobs,
+        )
+
+    if provider == "deepseek":
+        if model is None:
+            # See https://api-docs.deepseek.com/quick_start/pricing
+            model = "deepseek-chat"  # Default
+
+        if url is None:
+            url = lookup_variable("DEEPSEEK_ENDPOINT")
+
+        if key is None:
+            key = lookup_variable("DEEPSEEK_API_KEY")
+
+        # API is OpenAI compatible
+        return ask_openai(
+            provider,
             model,
             url,
             key,

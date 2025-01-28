@@ -8,6 +8,7 @@ from util import lookup_variable, http_request, fatal
 
 
 def ask_openai(
+    provider,
     model,
     url,
     api_key,
@@ -65,7 +66,7 @@ def ask_openai(
         request, response = http_request(url, headers, json_data)
         response = response.json()
         answer = response["choices"][0]["message"]["content"]
-        provider = "openai"
+        provider = provider
         model = response["model"]
     except Exception as e:
         fatal(f"EXCEPTION: {e} REQUEST: {request} RESPONSE: {response}")
