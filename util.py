@@ -215,6 +215,10 @@ def http_request(url, headers, json_data, retry=0):
             response.headers,
             response.text,
         )
+        if response.text.strip() == "":
+            # Seen with DeepSeek behind Cloudflare
+            logging.warning("Empty response.text, ignoring.")
+            response = None
 
     except RequestException as e:
         response = None
