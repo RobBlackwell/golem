@@ -2,6 +2,8 @@
 Golem utilities
 """
 
+# pylint: disable=too-many-branches
+
 from datetime import datetime, timezone
 from decimal import Decimal
 from http import HTTPStatus
