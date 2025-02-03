@@ -196,6 +196,13 @@ def is_continuable_error(response):
     )
 
 
+def reset_session():
+    """Reset the global session by closing the existing one and creating a new one."""
+    global session
+    session.close()
+    session = requests.Session()
+
+
 def http_request(url, headers, json_data, retry=0):
     """
     Make an HTTP request to an LLM API
@@ -223,8 +230,11 @@ def http_request(url, headers, json_data, retry=0):
             response = None
 
     except RequestException as e:
-        response = None
         logging.warning("Exception: %s", e)
+        response = None
+
+    if response is None:
+        reset_session()
 
     if is_continuable_error(response):
 
