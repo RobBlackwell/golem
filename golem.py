@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2025-01-28 16:02:52 rblackwell>
+# Time-stamp: <2025-02-03 20:24:41 rblackwell>
 
 """Golem
 
@@ -80,35 +80,7 @@ def ask(
     seed = args.seed
     url = args.url
     key = args.key
-
-    if provider == "azure":
-        return ask_azure(
-            model,
-            url,
-            key,
-            messages,
-            temperature,
-            seed,
-            top_p,
-            max_tokens,
-            logprobs,
-            top_logprobs,
-        )
-
-    if provider == "azureai":
-        if model is not None:
-            logging.warning("Ignoring model")
-        return ask_azureai(
-            url,
-            key,
-            messages,
-            temperature,
-            seed,
-            top_p,
-            max_tokens,
-            logprobs,
-            top_logprobs,
-        )
+    reasoning_effort = args.reasoning_effort
 
     if provider == "openai":
         return ask_openai(
@@ -123,6 +95,7 @@ def ask(
             max_tokens,
             logprobs,
             top_logprobs,
+            reasoning_effort,
         )
 
     if provider == "deepseek":
@@ -149,6 +122,7 @@ def ask(
             max_tokens,
             logprobs,
             top_logprobs,
+            reasoning_effort,
         )
 
     if provider == "xai":
@@ -166,6 +140,40 @@ def ask(
         return ask_openai(
             provider,
             model,
+            url,
+            key,
+            messages,
+            temperature,
+            seed,
+            top_p,
+            max_tokens,
+            logprobs,
+            top_logprobs,
+            reasoning_effort,
+        )
+
+    if provider == "azure":
+        return ask_azure(
+            model,
+            url,
+            key,
+            messages,
+            temperature,
+            seed,
+            top_p,
+            max_tokens,
+            logprobs,
+            top_logprobs,
+            reasoning_effort,
+        )
+
+    if reasoning_effort is not None:
+        logging.warning("Ignoring reasoning_effort")
+
+    if provider == "azureai":
+        if model is not None:
+            logging.warning("Ignoring model")
+        return ask_azureai(
             url,
             key,
             messages,
@@ -343,6 +351,13 @@ def make_parser():
         type=int,
         default=None,
         help="Setting the random seed makes some models more deterministic.",
+    )
+
+    parser.add_argument(
+        "--reasoning_effort",
+        type=str,
+        default=None,
+        help="Constrains effort on reasoning for reasoning models, low, medium, or high.",
     )
 
     parser.add_argument(

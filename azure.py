@@ -28,6 +28,7 @@ def ask_azure(
     max_tokens,
     logprobs,
     top_logprobs,
+    reasoning_effort,
 ):
     """
     Make a request to the Azure OpenAI API.
@@ -74,6 +75,9 @@ def ask_azure(
 
     if top_logprobs is not None:
         json_data["top_logprobs"] = top_logprobs
+
+    if reasoning_effort is not None:
+        json_data["reasoning_effort"] = reasoning_effort
 
     request = None
     response = None
