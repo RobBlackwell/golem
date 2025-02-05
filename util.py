@@ -217,7 +217,7 @@ def http_request(url, headers, json_data, retry=0):
     )
 
     try:
-        response = session.post(url, headers=headers, json=json_data)
+        response = session.post(url, headers=headers, json=json_data, timeout=600)
         logging.debug(
             "http_response: {{status_code: %s, headers: %s, text: %s}}",
             response.status_code,
@@ -229,7 +229,7 @@ def http_request(url, headers, json_data, retry=0):
             logging.warning("Empty response.text, ignoring.")
             response = None
 
-    except RequestException as e:
+    except Exception as e:
         logging.warning("Exception: %s", e)
         response = None
 
