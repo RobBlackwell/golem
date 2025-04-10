@@ -18,7 +18,7 @@ def get_google_token():
     """
     command = ["gcloud", "auth", "print-access-token"]
     try:
-        result = subprocess.run(command, capture_output=True, text=True, check=True)
+        result = subprocess.run(command, capture_output=True, text=True, check=True, shell=True)
         token = result.stdout.strip()  # Removes any trailing newline
         return token
     except subprocess.CalledProcessError as e:
