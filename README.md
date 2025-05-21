@@ -104,6 +104,21 @@ export OPENAI_API_KEY="YOUR-KEY-HERE"
 golem --provider openai "Why is the sky blue?"
 ```
 
+### Azure OpenAI
+
+Having registered with Azure and deployed a model as part of the Azure
+OpenAI API service, you should have an endpoint and a key. These can
+be specified with the `--url` and `--key` command line arguments
+respectively, or you can set the corresponding shell variables
+AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY.
+
+### Azure AI
+
+Having deployed an Azure AI model, you should have an endpoint and a
+key.  These can be specified with the `--url` and `--key` command line
+arguments respectively, or you can set the corresponding shell
+variables AZUREAI_ENDPOINT_URL and AZUREAI_ENDPOINT_KEY.
+
 ### OpenRouter
 
 Having registered with OpenRouter, you can either specify your key as part of the command line, e.g.:
@@ -120,21 +135,6 @@ OPENROUTER_API_KEY. In bash you can set this as follows:
 export OPENROUTER_API_KEY="YOUR-KEY-HERE"
 golem --provider openrouter "Why is the sky blue?"
 ```
-
-### Azure OpenAI
-
-Having registered with Azure and deployed a model as part of the Azure
-OpenAI API service, you should have an endpoint and a key. These can
-be specified with the `--url` and `--key` command line arguments
-respectively, or you can set the corresponding shell variables
-AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY.
-
-### Azure AI
-
-Having deployed an Azure AI model, you should have an endpoint and a
-key.  These can be specified with the `--url` and `--key` command line
-arguments respectively, or you can set the corresponding shell
-variables AZUREAI_ENDPOINT_URL and AZUREAI_ENDPOINT_KEY.
 
 ### Google Vertex
 
