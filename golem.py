@@ -184,6 +184,32 @@ def ask(
             logprobs,
             top_logprobs,
         )
+    
+    if provider == "openrouter":
+        if model is None:
+            model = "meta-llama/llama-3.3-8b-instruct:free"
+
+        if url is None:
+            url = "https://openrouter.ai/api/v1/chat/completions"
+
+        if key is None:
+            key = lookup_variable("OPENROUTER_API_KEY")
+
+        # API is OpenAI compatible
+        return ask_openai(
+            provider,
+            model,
+            url,
+            key,
+            messages,
+            temperature,
+            seed,
+            top_p,
+            max_tokens,
+            logprobs,
+            top_logprobs,
+            reasoning_effort,
+        )
 
     if top_logprobs is not None:
         logging.warning("Ignoring top_logprobs")

@@ -104,6 +104,23 @@ export OPENAI_API_KEY="YOUR-KEY-HERE"
 golem --provider openai "Why is the sky blue?"
 ```
 
+### OpenRouter
+
+Having registered with OpenRouter, you can either specify your key as part of the command line, e.g.:
+
+``` bash
+golem --provider openrouter --key "YOUR-KEY-HERE" "Why is the sky blue?"
+```
+
+The default model for OpenRouter is set to `meta-llama/llama-3.3-8b-instruct:free` because it's free!
+
+If no key is provided, Golem will look for a shell variable called
+OPENROUTER_API_KEY. In bash you can set this as follows:
+``` bash
+export OPENROUTER_API_KEY="YOUR-KEY-HERE"
+golem --provider openrouter "Why is the sky blue?"
+```
+
 ### Azure OpenAI
 
 Having registered with Azure and deployed a model as part of the Azure
