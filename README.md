@@ -119,6 +119,23 @@ key.  These can be specified with the `--url` and `--key` command line
 arguments respectively, or you can set the corresponding shell
 variables AZUREAI_ENDPOINT_URL and AZUREAI_ENDPOINT_KEY.
 
+### OpenRouter
+
+Having registered with OpenRouter, you can either specify your key as part of the command line, e.g.:
+
+``` bash
+golem --provider openrouter --key "YOUR-KEY-HERE" "Why is the sky blue?"
+```
+
+The default model for OpenRouter is set to `meta-llama/llama-3.3-8b-instruct:free` because it's free!
+
+If no key is provided, Golem will look for a shell variable called
+OPENROUTER_API_KEY. In bash you can set this as follows:
+``` bash
+export OPENROUTER_API_KEY="YOUR-KEY-HERE"
+golem --provider openrouter "Why is the sky blue?"
+```
+
 ### Google Vertex
 
 For Google Vertex you need install the `gcloud` client because Golem
