@@ -20,6 +20,7 @@ def ask_openai(
     logprobs,
     top_logprobs,
     reasoning_effort,
+    n,
 ):
     """
     Make a request to the OpenAI API.
@@ -51,6 +52,9 @@ def ask_openai(
 
     if top_p is not None:
         json_data["top_p"] = top_p
+
+    if n is not None:
+        json_data["n"] = n
 
     if max_tokens is not None:
         json_data["max_tokens"] = max_tokens
