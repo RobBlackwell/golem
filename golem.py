@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2025-02-03 20:24:41 rblackwell>
+# Time-stamp: <2025-07-21 15:39:41 rblackwell>
 
 """Golem
 
@@ -184,7 +184,7 @@ def ask(
             logprobs,
             top_logprobs,
         )
-    
+
     if provider == "openrouter":
         if model is None:
             model = "meta-llama/llama-3.3-8b-instruct:free"
@@ -461,6 +461,9 @@ def main():
     if args.system_prompt:
         with open(args.system_prompt, "r", encoding="utf-8") as file:
             args.system_prompt = file.read()
+
+    if args.logprobs == "True":
+        args.logprobs = True
 
     for repeat in args.repeat:
 
