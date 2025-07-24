@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2025-07-24 09:22:48 rblackwell>
+# Time-stamp: <2025-07-24 17:30:29 rblackwell>
 
 """Golem
 
@@ -198,6 +198,33 @@ def ask(
 
         if key is None:
             key = lookup_variable("OPENROUTER_API_KEY")
+
+        # API is OpenAI compatible
+        return ask_openai(
+            provider,
+            model,
+            url,
+            key,
+            messages,
+            temperature,
+            seed,
+            top_p,
+            max_tokens,
+            logprobs,
+            top_logprobs,
+            reasoning_effort,
+            n,
+        )
+
+    if provider == "vllm":
+        if model is None:
+            model = "facebook/opt-125m"
+
+        if url is None:
+            url = "http://localhost:8000/v1/completions"
+
+        if key is None:
+            key = ""
 
         # API is OpenAI compatible
         return ask_openai(
