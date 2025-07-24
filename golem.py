@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2025-07-21 15:39:41 rblackwell>
+# Time-stamp: <2025-07-24 09:22:48 rblackwell>
 
 """Golem
 
@@ -81,6 +81,7 @@ def ask(
     url = args.url
     key = args.key
     reasoning_effort = args.reasoning_effort
+    n = args.n
 
     if provider == "openai":
         return ask_openai(
@@ -96,6 +97,7 @@ def ask(
             logprobs,
             top_logprobs,
             reasoning_effort,
+            n,
         )
 
     if provider == "deepseek":
@@ -123,6 +125,7 @@ def ask(
             logprobs,
             top_logprobs,
             reasoning_effort,
+            n,
         )
 
     if provider == "xai":
@@ -150,6 +153,7 @@ def ask(
             logprobs,
             top_logprobs,
             reasoning_effort,
+            n,
         )
 
     if provider == "azure":
@@ -209,6 +213,7 @@ def ask(
             logprobs,
             top_logprobs,
             reasoning_effort,
+            n,
         )
 
     if top_logprobs is not None:
@@ -332,6 +337,13 @@ def make_parser():
         type=int,
         default=0,
         help="Skip n records in the JSONL. Useful for restarting after a crash.",
+    )
+
+    parser.add_argument(
+        "--n",
+        type=int,
+        default=None,
+        help="How many chat completion choices to generate for each input message.",
     )
 
     parser.add_argument(
