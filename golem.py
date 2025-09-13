@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2025-07-24 17:30:29 rblackwell>
+# Time-stamp: <2025-09-13 08:50:33 rblackwell>
 
 """Golem
 
@@ -42,6 +42,7 @@ from azure import ask_azure
 from azureai import ask_azureai
 from vertex import ask_google
 from anthropic import ask_anthropic
+from gemini import ask_gemini
 
 __version__ = "0.0.1"
 
@@ -126,6 +127,11 @@ def ask(
             top_logprobs,
             reasoning_effort,
             n,
+        )
+
+    if provider == "gemini":
+        return ask_gemini(
+            provider, model, url, key, messages, temperature, seed, top_p, max_tokens
         )
 
     if provider == "xai":

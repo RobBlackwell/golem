@@ -275,5 +275,8 @@ def http_request(url, headers, json_data, retry=0):
     if "api-key" in headers:
         headers["api-key"] = REDACTED
 
+    if "X-goog-api-key" in headers:
+        headers["X-goog-api-key"] = REDACTED
+
     request = {"url": url, "headers": headers, "json": json_data}
     return request, response
