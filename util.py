@@ -203,7 +203,7 @@ def reset_session():
     session = requests.Session()
 
 
-def http_request(url, headers, json_data, retry=0):
+def http_request(url, headers, json_data, retry=0, timeout=600):
     """
     Make an HTTP request to an LLM API
     """
@@ -217,7 +217,7 @@ def http_request(url, headers, json_data, retry=0):
     )
 
     try:
-        response = session.post(url, headers=headers, json=json_data, timeout=600)
+        response = session.post(url, headers=headers, json=json_data, timeout=timeout)
         logging.debug(
             "http_response: {{status_code: %s, headers: %s, text: %s}}",
             response.status_code,

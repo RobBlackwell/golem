@@ -68,7 +68,7 @@ def ask_gemini(
     request = None
     response = None
     try:
-        request, response = http_request(url, headers, json_data)
+        request, response = http_request(url, headers, json_data, timeout=1200)
         response = response.json()
         answer = response["candidates"][0]["content"]["parts"][0]["text"]
         model = response["modelVersion"]
