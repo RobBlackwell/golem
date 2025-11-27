@@ -182,6 +182,14 @@ def is_gateway_error(response):
     return response.status_code in (HTTPStatus.BAD_GATEWAY, 503, 524, 529)
 
 
+def is_cancelled(response):
+    """
+    Return true if response implies a client side cancellation
+    (probably an HTTP timeout).
+    """
+    return response.status_code == 499
+
+
 def is_continuable_error(response):
     """
     Return True if response indicates an error that is
@@ -193,6 +201,7 @@ def is_continuable_error(response):
         or is_rate_limited(response)
         or is_server_error(response)
         or is_gateway_error(response)
+        or is_cancelled(response)
     )
 
 
