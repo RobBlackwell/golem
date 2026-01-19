@@ -17,6 +17,7 @@ setup(
         "azureai",
         "vertex",
         "anthropic",
+        "gemini",
     ],
     entry_points={
         "console_scripts": [
