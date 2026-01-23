@@ -49,29 +49,18 @@ git clone https://github.com/RobBlackwell/golem.git
 cd golem
 ```
 
-2. **Set up a virtual environment (optional but recommended)**
+2. **Install dependencies and the package**
 
-It's a good practice to create a virtual environment to manage Python dependencies.
+Golem uses [uv](https://github.com/astral-sh/uv) for fast, reliable Python package management:
 
 ``` bash
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate
+uv pip install -e .
 ```
 
-3. **Install dependencies**
-
-Use the `requirements.txt` file to install necessary Python packages:
+Alternatively, you can use the traditional pip:
 
 ``` bash
-pip install -r requirements.txt
-```
-
-4. **Install the package**
-
-After installing the dependencies, you can install the golem package itself:
-
-``` bash
-pip install .
+pip install -e .
 ```
 
 5. **Run the golem tool**

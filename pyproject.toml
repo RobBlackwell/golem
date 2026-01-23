@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "golem"
+version = "0.1"
+description = "Use Large Language Model APIs from the command line."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "GPL-3.0"}
+authors = [
+    {name = "Robert E. Blackwell", email = "rblackwell@turing.ac.uk"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests",
+]
+
+[project.urls]
+Homepage = "https://github.com/RobBlackwell/golem"
+
+[project.scripts]
+golem = "golem:main"
+
+[tool.uv]
+dev-dependencies = []
