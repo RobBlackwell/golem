@@ -5,12 +5,15 @@ Ollama support
 # pylint: disable=too-many-arguments, too-many-positional-arguments, broad-exception-caught
 
 from util import fatal, http_request
+import json
 
 # Ollama support requires a running Ollama server on port 11434, See
 # https://github.com/ollama/ollama/blob/main/README.md
 
 
-def ask_ollama(model, url, messages, temperature, seed, top_p, max_tokens):
+def ask_ollama(
+    model, url, messages, temperature, seed, top_p, max_tokens, response_format
+):
     """
     Make a request to a locally running Ollama server.
     """
@@ -36,6 +39,9 @@ def ask_ollama(model, url, messages, temperature, seed, top_p, max_tokens):
 
     if top_p is not None:
         json_data["options"]["top_p"] = top_p
+
+    if response_format is not None:
+        json_data["format"] = json.loads(response_format)
 
     # max_tokens is num_predict in Ollama
     if max_tokens is not None:

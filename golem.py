@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2025-09-13 08:50:33 rblackwell>
+# Time-stamp: <2026-01-27 16:46:00 rblackwell>
 
 """Golem
 
@@ -82,6 +82,7 @@ def ask(
     url = args.url
     key = args.key
     reasoning_effort = args.reasoning_effort
+    response_format = args.response_format
     n = args.n
 
     if provider == "openai":
@@ -177,10 +178,9 @@ def ask(
             reasoning_effort,
         )
 
-    if reasoning_effort is not None:
-        logging.warning("Ignoring reasoning_effort")
-
     if provider == "azureai":
+        if reasoning_effort is not None:
+            logging.warning("Ignoring reasoning_effort")
         if model is not None:
             logging.warning("Ignoring model")
         return ask_azureai(
@@ -263,7 +263,9 @@ def ask(
     if provider == "ollama":
         if key is not None:
             logging.warning("Ignoring key")
-        return ask_ollama(model, url, messages, temperature, seed, top_p, max_tokens)
+        return ask_ollama(
+            model, url, messages, temperature, seed, top_p, max_tokens, response_format
+        )
 
     if url is not None:
         logging.warning("Ignoring url %s", url)
@@ -407,6 +409,16 @@ def make_parser():
             'or a range (e.g. "0.0:1.1:0.1").'
         ),
     )
+
+    parser.add_argument(
+        "--response-format",
+        type=str,
+        default=None,
+        help=(
+            "Output response format, AKA structured outputs. Usually used for specifying a JSON schema."
+        ),
+    )
+
     parser.add_argument(
         "--top_p",
         type=str,
