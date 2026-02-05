@@ -145,9 +145,14 @@ def lookup_variable(name):
 
 def fatal(text):
     """
-    Fatal error handler. Log the error and bail.
+    Fatal error handler. Log the error, write to error.log, and bail.
     """
     logging.critical(text)
+    try:
+        with open("error.log", "a", encoding="utf-8") as f:
+            f.write(f"{timestamp()} FATAL: {text}\n")
+    except IOError as e:
+        logging.error("Failed to write to error.log: %s", e)
     sys.exit(1)
 
 
