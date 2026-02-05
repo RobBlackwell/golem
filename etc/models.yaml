@@ -1,0 +1,342 @@
+#
+# models.yaml
+#
+# A list of Large Language Models, with their attributes and pricing,
+# designed to be both machine and human readable. Principally used for
+# token cost estimation.
+#
+
+
+models:
+
+  - model: "grok-4.1-fast"
+    keys: ["x-ai/grok-4.1-fast","grok-4.1-fast"]
+    openrouter_name: "x-ai/grok-4.1-fast"
+    vendor: "XAI"
+    pricing:
+      input_price: 0.20
+      output_price: 0.50
+    date: 2025-11-17
+    context: 2000000
+    references: ["https://x.ai/news/grok-4-1"]
+
+  - model: "xai-grok-4"
+    keys: ["x-ai/grok-4", "grok-4-0709"]
+    openrouter_name: "x-ai/grok-4"
+    vendor: "XAI"
+    pricing:
+      input_price: 3
+      output_price: 15
+    date: 2025-07-09
+    context: 256000
+    references: ["https://x.ai/news/grok-4","https://data.x.ai/2025-08-20-grok-4-model-card.pdf", "https://docs.x.ai/docs/models/grok-4-0709"]
+
+  - model: "gemini-2-5-flash"
+    keys: ["google/gemini-2.5-flash"]
+    openrouter_name: "google/gemini-2.5-flash"
+    vendor: "Google"
+    pricing:
+      input_price: 0.30
+      output_price: 2.50
+    date: 2025-06-26
+    context: 1,048,576
+    references: ["https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash"]
+
+  - model: "gemini-2-5-flash-lite"
+    keys: ["gemini-2.5-flash-lite"]
+    openrouter_name: "google/gemini-2.5-flash-lite"
+    vendor: "Google"
+    pricing:
+      input_price: 0.075
+      output_price: 0.30
+    date: 2025-06-26
+    context: 1048576
+    references: ["https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash-lite"]
+
+  - model: "gemini-2-5-pro"
+    keys: ["google/gemini-2.5-pro", "gemini-2.5-pro"]
+    openrouter_name: "google/gemini-2.5-pro"
+    vendor: "Google"
+    pricing:
+      input_price: 1.25
+      output_price: 10.00
+    date: 2025-06-26
+    context: 1048576
+    references: ["https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro"]
+
+  - model: "deepseek-chat-v3-1"
+    keys: ["deepseek/deepseek-chat-v3.1"]
+    openrouter_name: "deepseek/deepseek-chat-v3.1"
+    vendor: "Deepseek"
+    pricing:
+      input_price: 0.56
+      output_price: 1.68
+    date: 2025-08-21
+    context: 163840
+    parameters: 685 # https://huggingface.co/deepseek-ai/DeepSeek-V3.1
+    references: ["https://api-docs.deepseek.com/news/news250821"]
+
+  - model: "openai-gpt-5"
+    keys: ["openai/gpt-5", "gpt-5-2025-08-07"]
+    openrouter_name: "openai/gpt-5"
+    vendor: "OpenAI"
+    pricing:
+      input_price: 1.25
+      output_price: 10
+    date: 2025-08-07
+    context: 400000
+    references: ["https://platform.openai.com/docs/models/gpt-5"]
+
+  - model: "openai-gpt-5-2"
+    keys: ["openai/gpt-5.2"]
+    openrouter_name: "openai/gpt-5.2"
+    vendor: "OpenAI"
+    pricing:
+      input_price: 1.75
+      output_price: 14
+    date: 2025-12-10
+    context: 400000
+    references: ["https://openai.com/index/gpt-5-system-card-update-gpt-5-2/"]
+
+
+  - model: "openai-gpt-5-1"
+    keys: ["openai/gpt-5.1", "gpt-5.1-2025-11-13"]
+    openrouter_name: "openai/gpt-5.1"
+    vendor: "OpenAI"
+    pricing:
+      input_price: 1.25
+      output_price: 10
+    date: 2025-11-12
+    context: 400000
+    references: ["https://openai.com/index/gpt-5-system-card-addendum-gpt-5-1/"]
+
+
+  - model: "ollama-llama3"
+    keys: ["meta-llama/llama-3-8b-instruct", "llama3"]
+    openrouter_name: "meta-llama/llama-3-8b-instruct"
+    vendor: "Meta"
+    parameters: 8.03 # https://ollama.com/library/llama3:8b
+    context: 8192
+    references: ["https://ai.meta.com/blog/meta-llama-3/"]
+    date: 2025-04-18
+
+  - model: "ollama-gemma3-1b"
+    keys: ["gemma3:1b"]
+    openrouter_name: "google/gemma3-1b" # Made up
+    vendor: "Google"
+    parameters: 1
+    context: 32000
+    references: ["https://ollama.com/library/gemma3:1b"]
+    date: 2025-03-10
+
+  - model: "ollama-phi4-reasoning-14b"
+    keys: ["phi4-reasoning:14b"]
+    openrouter_name: ""
+    vendor: "Microsoft"
+    parameters: 14
+    context: 16384
+    references: ["https://openrouter.ai/microsoft/phi-4"]
+    date: 2025-01-10
+
+  - model: "azure-o4-mini-2025-04-16"
+    keys: ["o4-mini-2025-04-16"]
+    openrouter_name: "openai/o4-mini"
+    vendor: "OpenAI"
+    date: 2025-04-16
+    context: 200000
+    references: ["https://platform.openai.com/docs/models/o4-mini"]
+    pricing:
+      input_price: 1.10
+      output_price: 4.40
+
+  - model: "azure-gpt-4o-2024-11-20"
+    keys: ["gpt-4o-2024-08-06"]
+    openrouter_name: "openai/gpt-4o-2024-08-06"
+    vendor: "OpenAI"
+    context: 128000
+    date: 2024-11-20
+    references: ["https://platform.openai.com/docs/models/gpt-4o"]
+    pricing:
+      input_price: 2.50
+      output_price: 10
+
+  - model: "gemini-2.0-flash-001"
+    keys: ["google/gemini-2.0-flash-001"]
+    openrouter_name: "google/gemini-2.0-flash-001"
+    vendor: "Google"
+    date: 2025-02-25
+    context: 1000000
+    pricing:
+      input_price: 0.10
+      output_price: 0.40
+    references: ["https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-0-flash"]
+
+  - model: "openai-o3-2025-04-16"
+    keys: ["o3-2025-04-16"]
+    openrouter_name: "openai/o3"
+    vendor: "OpenAI"
+    context: 200000 # https://openrouter.ai/openai/o3
+    pricing:
+      input_price: 2
+      output_price: 8
+    date: 2025-04-16
+
+  - model: "azure-o1-2024-12-17"
+    keys: ["o1-2024-12-17"]
+    openrouter_name: "openai/o1"
+    vendor: "OpenAI"
+    context: 200000
+    pricing:
+      input_price: 15
+      output_price: 60
+    date: 2024-12-17
+
+
+  - model: "amazon-nova-pro-v1"
+    keys: ["amazon/nova-pro-v1"]
+    openrouter_name: "amazon/nova-pro-v1"
+    vendor: "Amazon"
+    context: 300000
+    date: 2025-03-17 #?
+    references: ["https://arxiv.org/abs/2506.12103"]
+    pricing:
+      input_price: 0.8
+      output_price: 3.2
+
+  - model: "claude-3-7-sonnet-20250219"
+    keys: ["claude-3-7-sonnet-20250219"]
+    openrouter_name: "anthropic/claude-3.7-sonnet"
+    vendor: "Anthropic"
+    context: 200000
+    pricing:
+      input_price: 3
+      output_price: 15
+    date: 2025-02-19
+
+  - model: "claude-sonnet-4-20250514"
+    keys: ["claude-sonnet-4-20250514"]
+    openrouter_name: "anthropic/claude-sonnet-4"
+    vendor: "Anthropic"
+    context: 200000
+    pricing:
+      input_price: 3
+      output_price: 15
+    date: 2025-05-14
+
+  - model: "azure-gpt-45-preview-2025-02-27"
+    keys: ["gpt-4.5-preview-2025-02-27"]
+    openrouter_name: ""
+    vendor: "OpenAI"
+    deprecated: True # Retired July 2025
+    date: 2025-02-07
+
+  - model: "xai-grok-3-mini"
+    keys: ["grok-3-mini"]
+    openrouter_name: "x-ai/grok-3-mini"
+    vendor: "xAI"
+    context: 131072
+    pricing:
+      input_price: 0.30
+      output_price: 0.50
+    date: 2025-02-17
+    reference: "https://docs.x.ai/docs/models/grok-3-mini"
+
+  - model: "azure-gpt-35-turbo-0125"
+    keys: ["gpt-3.5-turbo-0125"]
+    openrouter_name: "openai/gpt-3.5-turbo"
+    vendor: "OpenAI"
+    context: 16385
+    deprecated: True
+    date: 2024-01-25
+
+  - model: "kimi-k2"
+    keys: ["moonshotai/kimi-k2"]
+    openrouter_name: "moonshotai/kimi-k2"
+    vendor: "Moonshot AI"
+    context: 63000 # https://openrouter.ai/moonshotai/kimi-k2
+    date: 2025-07-11
+    pricing:
+      input_price: 0.50 # https://openrouter.ai/moonshotai/kimi-k2
+      output_price: 2.40 # https://openrouter.ai/moonshotai/kimi-k2
+    parameters: 1000 # https://huggingface.co/moonshotai/Kimi-K2-Instruct
+
+
+  - model: "ollama-deepseek-r1-14b"
+    keys: ["deepseek-r1:14b"]
+    openrouter_name: "deepseek/deepseek-r1-distill-qwen-14b"
+    vendor: "Deepseek" # Distil based on Qwen
+    parameters: 14
+    context: 64000 # https://openrouter.ai/deepseek/deepseek-r1-distill-qwen-14b
+    date: 2025-01-20
+
+  - model: "deepseek-reasoner-r1"
+    keys: ["deepseek-reasoner"]
+    openrouter_name: "deepseek/deepseek-r1"
+    vendor: "Deepseek"
+    parameters: 685
+    context: 163840 # https://openrouter.ai/deepseek/deepseek-r1
+    date: 2025-01-20
+    pricing:
+      input_price: 0.70 # https://openrouter.ai/deepseek/deepseek-r1
+      output_price: 2.5 # https://openrouter.ai/deepseek/deepseek-r1
+
+  - model: "deepseek-r1-0528"
+    keys: ["deepseek/deepseek-r1-0528"]
+    openrouter_name: "deepseek/deepseek-r1-0528"
+    vendor: "Deepseek"
+    parameters: 685
+    context: 163840 # https://openrouter.ai/deepseek/deepseek-r1-0528
+    date: 2025-05-28
+    pricing:
+      input_price: 0.45 # https://openrouter.ai/deepseek/deepseek-r1-0528
+      output_price: 2.15 # https://openrouter.ai/deepseek/deepseek-r1-0528
+
+  - model: "gpt-oss-120b"
+    keys: ["openai/gpt-oss-120b"]
+    openrouter_name: "openai/gpt-oss-120b"
+    vendor: "OpenAI"
+    parameters: 117
+    context: 131072
+    date: 2025-08-5
+    references: ["https://platform.openai.com/docs/models/gpt-oss-120b"]
+    pricing:
+      input_price: 0.039
+      output_price: 0.19
+
+  - model: "gpt-oss-20b"
+    keys: ["openai/gpt-oss-20b"]
+    openrouter_name: "openai/gpt-oss-20b"
+    vendor: "OpenAI"
+    parameters: 21
+    context: 131072
+    date: 2025-08-5
+    pricing:
+      input_price: 0.02
+      output_price: 0.1
+    references: ["https://platform.openai.com/docs/models/gpt-oss-20b"]
+
+
+  - model: "glm-4-5"
+    keys: ["z-ai/glm-4.5"]
+    openrouter_name: "z-ai/glm-4.5"
+    vendor: "Z.ai"
+    parameters: 355
+    context: 131072
+    date: 2025-07-25
+    pricing:
+      input_price: 0.35
+      output_price: 1.55
+    references: ["https://openrouter.ai/z-ai/glm-4.5","https://z.ai/blog/glm-4.5"]
+
+
+  - model: "llama-3-3-70b-instruct"
+    keys: ["meta-llama/llama-3.3-70b-instruct"]
+    openrouter_name: "meta-llama/llama-3.3-70b-instruct"
+    vendor: "Meta"
+    parameters: 70.6
+    context: 131072
+    date: 2024-12-06
+    pricing:
+      input_price: 0.010
+      output_price: 0.32
+    references: ["https://openrouter.ai/meta-llama/llama-3.3-70b-instruct","https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"]
