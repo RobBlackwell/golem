@@ -304,7 +304,7 @@ models:
       output_price: 0.19
 
   - model: "gpt-oss-20b"
-    keys: ["openai/gpt-oss-20b"]
+    keys: ["openai/gpt-oss-20b", "gpt-oss:20b"]
     openrouter_name: "openai/gpt-oss-20b"
     vendor: "OpenAI"
     parameters: 21
@@ -340,3 +340,183 @@ models:
       input_price: 0.010
       output_price: 0.32
     references: ["https://openrouter.ai/meta-llama/llama-3.3-70b-instruct","https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"]
+
+
+
+  - model: "qwen/qwen3-vl-235b-a22b-instruct"
+    keys:
+      - "qwen/qwen3-vl-235b-a22b-instruct"
+    openrouter_name: "qwen/qwen3-vl-235b-a22b-instruct"
+    vendor: "Alibaba"
+    parameters: 235
+    context: 262144
+    date: 2025-09-23
+    pricing:
+      input_price: 0.20
+      output_price: 0.88
+    references:
+      - "https://openrouter.ai/qwen/qwen3-vl-235b-a22b-instruct"
+
+
+  - model: "gemini-2.5-flash"
+    keys:
+      - "google/gemini-2.5-flash"
+      - "gemini-2.5-flash"
+    openrouter_name: "google/gemini-2.5-flash"
+    vendor: "Google DeepMind"
+    context: 1048576
+    date: 2025-06-17
+    pricing:
+      input_price: 0.30
+      output_price: 2.50
+    references:
+      - "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash"
+
+  - model: "qwen/qwen3-8b"
+    keys:
+      - "qwen3:8b"
+      - "qwen/qwen3-8b"
+    openrouter_name: "qwen/qwen3-8b"
+    vendor: "Alibaba"
+    parameters: 8
+    context: 32000
+    date: 2025-04-28
+    pricing:
+      input_price: 0.05
+      output_price: 0.40
+    references:
+      - "https://openrouter.ai/qwen/qwen3-8b"
+
+  - model: "meta-llama/llama-3.2-90b-vision-instruct"
+    keys:
+      - "meta-llama/llama-3.2-90b-vision-instruct"
+    openrouter_name: "meta-llama-3.2-90b-vision-instruct"
+    vendor: "Meta"
+    parameters: 90
+    context: 131072
+    date: 2024-09-25
+    pricing:
+      input_price: 0.049
+      output_price: 0.049
+    references:
+      - "https://openrouter.ai/meta-llama/llama-3.2-11b-vision-instruct"
+
+  - model: "microsoft/phi-4"
+    keys:
+      - "microsoft/phi-4"
+      - "microsoft/phi-4-multimodal-instruct" # Presumably?
+    openrouter_name: "microsoft/phi-4"
+    vendor: "Microsoft"
+    context: 16384
+    modality: "multimodal"
+    date: 2025-01-10
+    pricing:
+      input_price: 0.06
+      output_price: 0.14
+    references:
+      - "https://openrouter.ai/microsoft/phi-4"
+
+  - model: "claude-sonnet-4.5"
+    keys:
+      - "anthropic/claude-sonnet-4.5"
+      - "claude-sonnet-4-5"
+    openrouter_name: "anthropic/claude-sonnet-4.5"
+    vendor: "Anthropic"
+    context: 1000000
+    date: 2025-09-29
+    pricing:
+      input_price: 3
+      output_price: 15
+    references:
+      - https://openrouter.ai/anthropic/claude-sonnet-4.5
+
+  - model: "deepseek-v3.2"
+    keys:
+      - "deepseek/deepseek-v3.2"
+      - "deepseek-v3.2"
+    openrouter_name: "deepseek/deepseek-v3.2"
+    vendor: "Deepseek"
+    parameters: 671
+    context: 163840
+    date: 2025-12-01
+    pricing:
+      input_price: 0.25
+      output_price: 0.38
+    references:
+      - "https://openrouter.ai/deepseek/deepseek-v3.2"
+
+  - model: "gemini-3-flash-preview"
+    keys:
+      - "google/gemini-3-flash-preview"
+      - "gemini-3-flash-preview"
+    openrouter_name: "google/gemini-3-flash-preview"
+    vendor: "Google"
+    context: 1048576
+    date: 2025-12-17
+    pricing:
+      input_price: 0.50
+      output_price: 3.00
+    references:
+      - https://openrouter.ai/google/gemini-3-flash-preview
+
+  - model: "meta-llama-3.1-8b-instruct"
+    keys:
+      - "meta-llama/llama-3.1-8b-instruct"
+      - "llama-3.1-8b-instruct"
+    openrouter_name: "meta-llama/llama-3.1-8b-instruct"
+    vendor: "Meta"
+    parameters: 8
+    context: 16384
+    date: 2024-07-23
+    pricing:
+      input_price: 0.02
+      output_price: 0.05
+    references:
+      - https://openrouter.ai/meta-llama/llama-3.1-8b-instruct
+
+  - model: "ministral-3b-2512"
+    keys:
+      - "mistralai/ministral-3b-2512"
+      - "ministral-3b-2512"
+    openrouter_name: "mistralai/ministral-3b-2512"
+    vendor: "Mistral AI"
+    parameters: 3
+    context: 131072
+    date: 2025-12-02
+    pricing:
+      input_price: 0.10
+      output_price: 0.10
+    references:
+      - "https://openrouter.ai/mistralai/ministral-3b-2512"
+      - "https://docs.mistral.ai/models/ministral-3-3b-25-12"
+
+  - model: "gemma-3n-e4b-it"
+    keys:
+      - "google/gemma-3n-e4b-it"
+      - "gemma-3n-e4b-it"
+    openrouter_name: "google/gemma-3n-e4b-it"
+    vendor: "Google"
+    parameters: 8
+    context: 32768
+    date: 2025-05-20
+    pricing:
+      input_price: 0.02
+      output_price: 0.04
+    references:
+      - "https://openrouter.ai/google/gemma-3n-e4b-it"
+      - "https://huggingface.co/google/gemma-3n-E4B-it"
+
+  - model: "openai-gpt-3.5-turbo"
+    keys:
+      - "openai/gpt-3.5-turbo"
+      - "gpt-3.5-turbo"
+      - "gpt-35-turbo"
+    openrouter_name: "openai/gpt-3.5-turbo"
+    vendor: "OpenAI"
+    context: 16385
+    date: 2023-05-28
+    pricing:
+      input_price: 0.50
+      output_price: 1.50
+    references:
+      - "https://openrouter.ai/openai/gpt-3.5-turbo"
