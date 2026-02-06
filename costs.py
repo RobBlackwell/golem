@@ -53,7 +53,15 @@ def process_file(filename, pricing_lookup):
         with open(filename, "r", encoding="utf-8") as f:
             for line in f:
                 total_lines += 1
-                data = json.loads(line)
+                try:
+                    data = json.loads(line)
+                except json.JSONDecodeError as e:
+                    print(
+                        f"Warning: Skipping malformed JSON in {filename}, line {total_lines}: {e}",
+                        file=sys.stderr,
+                    )
+                    continue
+
                 if "model" in data:
                     model = data["model"]
 
