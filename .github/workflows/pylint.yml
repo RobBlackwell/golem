@@ -28,4 +28,4 @@ jobs:
 
       - name: Analysing the code with pylint
         run: |
-          uv run pylint -d duplicate-code $(git ls-files '*.py')
+          uv run --no-sync pylint -d duplicate-code $(git ls-files '*.py')
