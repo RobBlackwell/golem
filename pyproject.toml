@@ -27,5 +27,5 @@ Homepage = "https://github.com/RobBlackwell/golem"
 [project.scripts]
 golem = "golem:main"
 
-[tool.uv]
-dev-dependencies = []
+[tool.uv.dependency-groups]
+dev = []

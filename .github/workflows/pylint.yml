@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies (uv)
         run: |
-          uv sync --frozen --dev
+          uv sync --dev
 
       - name: Analysing the code with pylint
         run: |
