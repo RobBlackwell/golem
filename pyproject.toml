@@ -8,13 +8,12 @@ version = "0.1"
 description = "Use Large Language Model APIs from the command line."
 readme = "README.md"
 requires-python = ">=3.8"
-license = {text = "GPL-3.0"}
+license = "GPL-3.0"
 authors = [
     {name = "Robert E. Blackwell", email = "rblackwell@turing.ac.uk"}
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
 ]
 dependencies = [
@@ -27,5 +26,7 @@ Homepage = "https://github.com/RobBlackwell/golem"
 [project.scripts]
 golem = "golem:main"
 
-[tool.uv.dependency-groups]
-dev = []
+[tool.setuptools]
+py-modules = ["golem", "openai", "anthropic", "azure", "azureai", "gemini", "vertex", "ollama", "util", "costs"]
+
+
