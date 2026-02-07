@@ -2,7 +2,7 @@
 Azure OpenAI support for golem.
 """
 
-# pylint: disable=broad-exception-caught, too-many-arguments, too-many-positional-arguments, too-many-locals
+# pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals
 
 from util import http_request, fatal, lookup_variable
 

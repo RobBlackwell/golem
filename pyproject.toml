@@ -29,4 +29,8 @@ golem = "golem:main"
 [tool.setuptools]
 py-modules = ["golem", "openai", "anthropic", "azure", "azureai", "gemini", "vertex", "ollama", "util", "costs"]
 
+[project.optional-dependencies]
+dev = [
+    "pylint",
+]
 

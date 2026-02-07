@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 
-# Reads an answers.jsonl file and extracts information about the
-# number of tokens used (where possible) and calculates the cost of
-# the experiment (based on data in /etc/models.yaml
+"""
+Reads one or more answers.jsonl files, extracts token usage information,
+and calculates experiment costs using pricing data from etc/models.yaml.
+"""
 
-import sys
-import json
-from statistics import median
 from pathlib import Path
+import json
+import sys
 import yaml
 
 
 def load_pricing():
     """Load pricing data from etc/models.yaml and build lookup dictionary."""
-    pricing_lookup = {}
+    pricing_data = {}
 
     models_yaml = Path(__file__).parent / "etc" / "models.yaml"
     try:
@@ -26,7 +26,7 @@ def load_pricing():
                     if pricing:
                         # Add entries for all keys in "keys" field
                         for key in model_entry.get("keys", []):
-                            pricing_lookup[key] = pricing
+                            pricing_data[key] = pricing
     except FileNotFoundError:
         print(
             f"Warning: {models_yaml} not found, costs will not be calculated",
@@ -35,10 +35,10 @@ def load_pricing():
     except yaml.YAMLError as e:
         print(f"Warning: Error parsing {models_yaml}: {e}", file=sys.stderr)
 
-    return pricing_lookup
+    return pricing_data
 
 
-def process_file(filename, pricing_lookup):
+def process_file(filename, pricing_data):
     prompt_tokens = []
     completion_tokens = []
     total_tokens = []
@@ -107,8 +107,8 @@ def process_file(filename, pricing_lookup):
     output_cost = 0.0
     total_cost = 0.0
 
-    if model in pricing_lookup:
-        pricing = pricing_lookup[model]
+    if model in pricing_data:
+        pricing = pricing_data[model]
         input_price = pricing.get("input_price", 0.0)
         output_price = pricing.get("output_price", 0.0)
 

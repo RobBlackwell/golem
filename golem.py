@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2026-01-27 16:46:00 rblackwell>
+# Time-stamp: <2026-02-07 21:01:55 rblackwell>
 
 """Golem
 
@@ -19,7 +19,7 @@ Examples
 
 """
 
-# pylint: disable=too-many-arguments, broad-exception-caught, too-many-locals, too-many-branches, too-many-return-statements, global-statement, too-many-statements, too-many-positional-arguments
+# pylint: disable=too-many-arguments, broad-exception-caught, too-many-locals, too-many-branches, too-many-return-statements, global-statement, too-many-statements
 
 
 import argparse
@@ -415,7 +415,8 @@ def make_parser():
         type=str,
         default=None,
         help=(
-            "Output response format, AKA structured outputs. Usually used for specifying a JSON schema."
+            "Output response format, AKA structured outputs."
+            "Usually used for specifying a JSON schema."
         ),
     )
 

@@ -12,9 +12,7 @@ import os
 import random
 import sys
 import time
-
 import requests
-from requests.exceptions import RequestException
 
 session = requests.Session()  # Use session for keep-alive and connection pooling
 

@@ -520,3 +520,31 @@ models:
       output_price: 1.50
     references:
       - "https://openrouter.ai/openai/gpt-3.5-turbo"
+
+  - model: "moonshotai-kimi-k2-0905"
+    keys:
+      - "moonshotai/kimi-k2-0905"
+      - "kimi-k2-0905"
+    openrouter_name: "moonshotai/kimi-k2-0905"
+    vendor: "Moonshot AI"
+    context: 262144
+    date: 2025-09-04
+    pricing:
+      input_price: 0.39
+      output_price: 1.90
+    references:
+      - "https://openrouter.ai/moonshotai/kimi-k2-0905"
+
+  - model: "mistralai-mistral-nemo"
+    keys:
+      - "mistralai/mistral-nemo"
+      - "mistral-nemo"
+    openrouter_name: "mistralai/mistral-nemo"
+    vendor: "Mistral AI"
+    context: 131072
+    date: 2024-07-19
+    pricing:
+      input_price: 0.02
+      output_price: 0.04
+    references:
+      - "https://openrouter.ai/mistralai/mistral-nemo"

@@ -4,7 +4,7 @@ Anthropic support for golem
 
 from util import http_request, fatal, lookup_variable
 
-# pylint: disable=broad-exception-caught, too-many-arguments, too-many-positional-arguments
+# pylint: disable=broad-exception-caught, too-many-arguments
 
 
 def ask_anthropic(model, url, api_key, messages, temperature, top_p, max_tokens):

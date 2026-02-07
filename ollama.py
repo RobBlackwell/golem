@@ -2,10 +2,10 @@
 Ollama support
 """
 
-# pylint: disable=too-many-arguments, too-many-positional-arguments, broad-exception-caught
+# pylint: disable=too-many-arguments, broad-exception-caught
 
-from util import fatal, http_request
 import json
+from util import fatal, http_request
 
 # Ollama support requires a running Ollama server on port 11434, See
 # https://github.com/ollama/ollama/blob/main/README.md
