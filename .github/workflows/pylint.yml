@@ -23,7 +23,7 @@ jobs:
           enable-cache: true
 
       - name: Install dependencies (uv)
-        run: uv sync --extra --dev
+        run: uv sync --extra dev
 
       - name: Analysing the code with pylint
         run: |
