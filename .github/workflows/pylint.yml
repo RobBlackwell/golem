@@ -23,9 +23,8 @@ jobs:
           enable-cache: true
 
       - name: Install dependencies (uv)
-        run: |
-          uv sync --dev
+        run: uv sync --extra --dev
 
       - name: Analysing the code with pylint
         run: |
-          uv run --no-sync pylint -d duplicate-code $(git ls-files '*.py')
+          uv run pylint -d duplicate-code $(git ls-files '*.py')
