@@ -17,6 +17,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
+    "pandas>=2.0.3",
+    "pyyaml>=6.0.3",
     "requests",
 ]
 
