@@ -2,9 +2,10 @@
 
 # Read one or more answers.jsonl files, compute inter-record timestamp
 # intervals per model (ignoring non-positive deltas), and output the
-# sample count and median latency (seconds) per model as JSONL.
+# sample count, median latency (seconds), and quartiles per model as JSONL.
 
 import json
+from json import JSONDecodeError
 import statistics
 import sys
 from collections import defaultdict
@@ -24,12 +25,19 @@ def compute_intervals_for_file(path: str):
     intervals = []
 
     with open(path, "r", encoding="utf-8") as f:
-        for line in f:
+        for lineno, line in enumerate(f, start=1):
             line = line.strip()
             if not line:
                 continue
 
-            record = json.loads(line)
+            try:
+                record = json.loads(line)
+            except JSONDecodeError as e:
+                print(
+                    f"warning: {path}:{lineno}: invalid JSON skipped ({e})",
+                    file=sys.stderr,
+                )
+                continue
 
             if model_name is None:
                 model_name = record.get("model")
@@ -42,7 +50,7 @@ def compute_intervals_for_file(path: str):
 
             if previous_timestamp is not None:
                 delta_seconds = (current_timestamp - previous_timestamp).total_seconds()
-                if delta_seconds > 0:  # ignore out-of-order or identical timestamps
+                if delta_seconds > 0:
                     intervals.append(delta_seconds)
 
             previous_timestamp = current_timestamp
@@ -61,10 +69,24 @@ def main(paths):
     for model_name in sorted(model_to_intervals):
         intervals = model_to_intervals[model_name]
 
+        if intervals:
+            median = statistics.median(intervals)
+            # quartiles: Q1 (25%), Q2 (median), Q3 (75%)
+            q1, _, q3 = statistics.quantiles(intervals, n=4)
+            iqr = q3 - q1
+        else:
+            median = None
+            q1 = None
+            q3 = None
+            iqr = None
+
         output = {
             "model": model_name,
             "samples": len(intervals),
-            "median": statistics.median(intervals) if intervals else None,
+            "median": median,
+            "q1": q1,
+            "q3": q3,
+            "iqr": iqr,
         }
         print(json.dumps(output))
 
