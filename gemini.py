@@ -36,12 +36,12 @@ def ask_gemini(
         for entry in messages2
     ]
 
-    json_data = {
-        "contents": messages2,
-    }
+    json_data = {}
 
     if system:
         json_data["systemInstruction"] = {"parts": [{"text": system}]}
+
+    json_data["contents"] = messages2
 
     if max_tokens is not None:
         json_data.setdefault("generationConfig", {})
