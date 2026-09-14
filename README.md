@@ -125,6 +125,31 @@ export OPENROUTER_API_KEY="YOUR-KEY-HERE"
 golem --provider openrouter "Why is the sky blue?"
 ```
 
+### Claude Code
+
+Golem can benchmark [Claude Code](https://claude.com/claude-code), the
+coding agent, as well as bare models. This provider shells out to the
+`claude` command line tool rather than calling an HTTP API, so the
+result reflects the whole agent, tool use included:
+
+``` bash
+golem --provider claude-code --model haiku "What is 7 + 2? Only give the final answer"
+```
+
+It requires the `claude` CLI to be installed and authenticated. By
+default the agent is given the `Bash`, `WebFetch` and `WebSearch` tools
+and runs with permission prompts disabled, so run it in a directory you
+don't mind it writing to.
+
+For reproducibility, golem never lets an ambient `CLAUDE.md` reach the
+agent, whether it comes from the working directory, a parent directory
+or your `~/.claude`. Otherwise a benchmark would quietly measure your
+local instructions as well as the model, and would not reproduce on
+another machine.
+
+See `AGENTS.md` for the environment variables that control the tool
+set, permission mode and timeout.
+
 ### Google Vertex
 
 For Google Vertex you need install the `gcloud` client because Golem
