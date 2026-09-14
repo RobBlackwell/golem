@@ -445,6 +445,14 @@ models:
     references:
       - "https://openrouter.ai/deepseek/deepseek-v3.2"
 
+  - model: "gemini-3.1-flash-lite"
+    keys:
+      - "gemini-3.1-flash-lite"
+    vendor: "Google"
+    pricing:
+      input_price: 0.25
+      output_price: 1.50
+
   - model: "gemini-3-flash-preview"
     keys:
       - "google/gemini-3-flash-preview"
