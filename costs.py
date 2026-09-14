@@ -45,6 +45,7 @@ def process_file(filename, pricing_data):
     input_tokens = []
     output_tokens = []
     repeats = []
+    reported_costs = []
 
     model = ""
 
@@ -64,6 +65,11 @@ def process_file(filename, pricing_data):
 
                 if "model" in data:
                     model = data["model"]
+
+                # Claude Code reports its own cost, which accounts for
+                # prompt caching and for every turn of an agent run.
+                if "total_cost_usd" in data.get("response", {}):
+                    reported_costs.append(data["response"]["total_cost_usd"])
 
                 usage = data.get("response", {}).get("usage")
 
@@ -107,7 +113,12 @@ def process_file(filename, pricing_data):
     output_cost = 0.0
     total_cost = 0.0
 
-    if model in pricing_data:
+    if reported_costs:
+        # Prefer a cost the provider reported over one we derive from
+        # token counts, because token pricing here ignores cache reads
+        # and writes, which dominate the bill for agent runs.
+        total_cost = sum(reported_costs)
+    elif model in pricing_data:
         pricing = pricing_data[model]
         input_price = pricing.get("input_price", 0.0)
         output_price = pricing.get("output_price", 0.0)
