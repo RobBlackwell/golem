@@ -29,7 +29,7 @@ Homepage = "https://github.com/RobBlackwell/golem"
 golem = "golem:main"
 
 [tool.setuptools]
-py-modules = ["golem", "openai", "anthropic", "azure", "azureai", "gemini", "vertex", "ollama", "util", "costs"]
+py-modules = ["golem", "openai", "anthropic", "azure", "azureai", "gemini", "vertex", "ollama", "claudecode", "util", "costs"]
 
 [project.optional-dependencies]
 dev = [

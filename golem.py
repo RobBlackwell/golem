@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Time-stamp: <2026-02-07 21:01:55 rblackwell>
+# Time-stamp: <2026-06-13 17:23:13 rblackwell>
 
 """Golem
 
@@ -43,6 +43,7 @@ from azureai import ask_azureai
 from vertex import ask_google
 from anthropic import ask_anthropic
 from gemini import ask_gemini
+from claudecode import ask_claudecode
 
 __version__ = "0.0.1"
 
@@ -132,7 +133,16 @@ def ask(
 
     if provider == "gemini":
         return ask_gemini(
-            provider, model, url, key, messages, temperature, seed, top_p, max_tokens
+            provider,
+            model,
+            url,
+            key,
+            messages,
+            temperature,
+            seed,
+            top_p,
+            max_tokens,
+            reasoning_effort,
         )
 
     if provider == "xai":
@@ -267,6 +277,27 @@ def ask(
             model, url, messages, temperature, seed, top_p, max_tokens, response_format
         )
 
+    if provider in ("claude-code", "claudecode"):
+        if temperature is not None:
+            logging.warning("Ignoring temperature")
+        if top_p is not None:
+            logging.warning("Ignoring top_p")
+        if seed is not None:
+            logging.warning("Ignoring seed")
+        if max_tokens is not None:
+            logging.warning("Ignoring max_tokens")
+        if n is not None:
+            logging.warning("Ignoring n")
+        return ask_claudecode(
+            provider,
+            model,
+            url,
+            key,
+            messages,
+            reasoning_effort,
+            response_format,
+        )
+
     if url is not None:
         logging.warning("Ignoring url %s", url)
 
@@ -336,7 +367,7 @@ def make_parser():
         default="Ollama",
         help=(
             "API provider, e.g., OpenAI, Google, Anthropic, Azure, "
-            "AzureAI or Ollama. Default Ollama."
+            "AzureAI, Claude-Code or Ollama. Default Ollama."
         ),
     )
 
