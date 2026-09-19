@@ -49,6 +49,16 @@
           };
         };
 
+        checks.pylint = pkgs.runCommand "golem-pylint"
+          {
+            buildInputs = [ pythonEnv ];
+          } ''
+            export HOME="$TMPDIR"
+            cd ${self}
+            pylint -d duplicate-code $(find . -name '*.py' -not -path './.git/*')
+            touch $out
+          '';
+
         devShells.default = pkgs.mkShell {
           packages = [
             pythonEnv
