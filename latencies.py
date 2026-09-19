@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
-# Read one or more answers.jsonl files, compute inter-record timestamp
-# intervals per model (ignoring non-positive deltas), and output the
-# sample count, median latency (seconds), and quartiles per model as JSONL.
+"""
+Read one or more answers.jsonl files, compute inter-record timestamp
+intervals per model (ignoring non-positive deltas), and output the
+sample count, median latency (seconds), and quartiles per model as JSONL.
+"""
 
 import json
 from json import JSONDecodeError
@@ -13,6 +15,7 @@ from datetime import datetime
 
 
 def parse_timestamp(ts: str) -> datetime:
+    """Parse an ISO 8601 timestamp, accepting a trailing 'Z' as UTC."""
     ts = ts.strip()
     if ts.endswith("Z"):
         ts = ts[:-1] + "+00:00"
@@ -20,6 +23,7 @@ def parse_timestamp(ts: str) -> datetime:
 
 
 def compute_intervals_for_file(path: str):
+    """Return (model_name, list of positive inter-record intervals in seconds) for one file."""
     model_name = None
     previous_timestamp = None
     intervals = []
@@ -59,6 +63,7 @@ def compute_intervals_for_file(path: str):
 
 
 def main(paths):
+    """Print per-model latency stats (samples, median, quartiles, IQR) as JSONL."""
     model_to_intervals = defaultdict(list)
 
     for path in paths:

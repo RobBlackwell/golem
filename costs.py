@@ -10,6 +10,11 @@ import json
 import sys
 import yaml
 
+# process_file's branching is inherent to handling three different
+# provider usage-JSON shapes (OpenAI, Anthropic, Gemini) plus the
+# Claude Code self-reported cost path.
+# pylint: disable=too-many-locals, too-many-branches, too-many-statements
+
 
 def load_pricing():
     """Load pricing data from etc/models.yaml and build lookup dictionary."""
@@ -39,6 +44,10 @@ def load_pricing():
 
 
 def process_file(filename, pricing_data):
+    """
+    Read an answers.jsonl file, sum its token usage, price it against
+    pricing_data, and print one cost summary JSON line.
+    """
     prompt_tokens = []
     completion_tokens = []
     total_tokens = []

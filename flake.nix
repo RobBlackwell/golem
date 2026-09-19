@@ -54,7 +54,8 @@
             buildInputs = [ pythonEnv ];
           } ''
             export HOME="$TMPDIR"
-            cd ${self}
+            cp -r ${self} golem
+            cd golem
             pylint -d duplicate-code $(find . -name '*.py' -not -path './.git/*')
             touch $out
           '';

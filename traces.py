@@ -11,6 +11,11 @@ import sys
 
 
 def find_trace(response):
+    """
+    Extract a reasoning trace from a provider response, probing each
+    known shape (OpenRouter/DeepSeek, legacy DeepSeek, OpenAI) in turn.
+    """
+    # pylint: disable=too-many-return-statements
     if not isinstance(response, dict):
         return None
 
@@ -54,7 +59,7 @@ def find_trace(response):
 
 
 def process_file(filename):
-
+    """Read filename's answers.jsonl records and print one JSON line per reasoning trace found."""
     try:
         with open(filename, "r", encoding="utf-8") as f:
             for line in f:
@@ -68,9 +73,9 @@ def process_file(filename):
                     )
                     continue
 
-                id = None
+                record_id = None
                 if "id" in data:
-                    id = data["id"]
+                    record_id = data["id"]
 
                 model = None
                 if "model" in data:
@@ -93,7 +98,7 @@ def process_file(filename):
                     p = Path(filename)
 
                     entry = {
-                        "id": id,
+                        "id": record_id,
                         "answer": answer,
                         "file": str(filename),
                         "label": p.parent.name,
@@ -108,7 +113,6 @@ def process_file(filename):
 
     except FileNotFoundError:
         print(f"Error: file not found: {filename}", file=sys.stderr)
-        return
 
 
 if __name__ == "__main__":

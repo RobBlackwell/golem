@@ -210,7 +210,7 @@ def is_continuable_error(response):
 
 def reset_session():
     """Reset the global session by closing the existing one and creating a new one."""
-    global session
+    global session  # pylint: disable=global-statement
     session.close()
     session = requests.Session()
 
@@ -241,7 +241,7 @@ def http_request(url, headers, json_data, retry=0, timeout=600):
             logging.warning("Empty response.text, ignoring.")
             response = None
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         logging.warning("Exception: %s", e)
         response = None
 
