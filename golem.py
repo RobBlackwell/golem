@@ -19,7 +19,7 @@ Examples
 
 """
 
-# pylint: disable=too-many-arguments, broad-exception-caught, too-many-locals, too-many-branches, too-many-return-statements, global-statement, too-many-statements
+# pylint: disable=too-many-arguments, broad-exception-caught, too-many-locals, too-many-branches, too-many-return-statements, global-statement, too-many-statements, too-many-positional-arguments
 
 
 import argparse

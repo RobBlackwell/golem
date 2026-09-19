@@ -15,7 +15,7 @@ Equivalent to:
 Requires the claude CLI on PATH, see https://claude.com/claude-code
 """
 
-# pylint: disable=too-many-arguments, too-many-locals, too-many-branches, broad-exception-caught
+# pylint: disable=too-many-arguments, too-many-locals, too-many-branches, broad-exception-caught, too-many-positional-arguments
 
 import json
 import logging

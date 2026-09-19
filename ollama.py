@@ -2,7 +2,7 @@
 Ollama support
 """
 
-# pylint: disable=too-many-arguments, broad-exception-caught
+# pylint: disable=too-many-arguments, broad-exception-caught, too-many-positional-arguments
 
 import json
 from util import fatal, http_request

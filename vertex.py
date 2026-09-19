@@ -2,7 +2,7 @@
 Google Vertex support for Golem
 """
 
-# pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals, global-statement
+# pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals, global-statement, too-many-positional-arguments
 
 import subprocess
 import logging

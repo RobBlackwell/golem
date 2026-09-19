@@ -2,7 +2,7 @@
 Google Gemini support for Golem
 """
 
-# pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals, global-statement
+# pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals, global-statement, too-many-positional-arguments
 
 from util import http_request, fatal, lookup_variable
 

@@ -4,7 +4,7 @@ OpenAI support for golem.
 
 from util import lookup_variable, http_request, fatal
 
-# pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals
+# pylint: disable=broad-exception-caught, too-many-arguments, too-many-locals, too-many-positional-arguments
 
 
 def ask_openai(
