@@ -26,7 +26,11 @@ def to_parts(content):
         if kind == "text":
             parts.append({"text": part["text"]})
         elif kind == "image_url":
-            url = part["image_url"]["url"]
+            # Prompt files write image_url either as the OpenAI object
+            # form, or as a bare data URL string, which OpenAI
+            # compatible endpoints also accept.
+            image_url = part["image_url"]
+            url = image_url["url"] if isinstance(image_url, dict) else image_url
             if not url.startswith("data:"):
                 fatal(f"Gemini needs an inline data URL, not {url}")
             header, _, data = url.partition(",")

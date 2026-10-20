@@ -64,6 +64,40 @@ EXAMPLES = (
 )
 
 
+def openrouter_provider_routing(spec):
+    """
+    Build an OpenRouter "provider" routing object from a command line spec.
+
+    OpenRouter load balances across upstream providers that may differ in
+    quantisation and settings, which is undesirable for benchmarking, so
+    the spec pins a run to specific providers.
+
+    The spec is either a comma separated list of provider slugs (e.g.
+    "deepinfra,together"), which routes in that order with fallbacks
+    disabled, or a JSON object which is passed through as is (e.g.
+    '{"order": ["deepinfra"], "quantizations": ["fp8"]}').
+
+    See https://openrouter.ai/docs/features/provider-routing
+    """
+
+    if spec is None:
+        return None
+
+    spec = spec.strip()
+
+    if spec.startswith("{"):
+        try:
+            return json.loads(spec)
+        except json.JSONDecodeError as e:
+            fatal(f"Invalid JSON for --openrouter-provider: {e}")
+            return None
+
+    return {
+        "order": [s.strip() for s in spec.split(",") if s.strip()],
+        "allow_fallbacks": False,
+    }
+
+
 def ask(
     args,
     messages,
@@ -85,6 +119,9 @@ def ask(
     reasoning_effort = args.reasoning_effort
     response_format = args.response_format
     n = args.n
+
+    if args.openrouter_provider is not None and provider != "openrouter":
+        logging.warning("Ignoring openrouter_provider")
 
     if provider == "openai":
         return ask_openai(
@@ -230,6 +267,7 @@ def ask(
             top_logprobs,
             reasoning_effort,
             n,
+            provider_routing=openrouter_provider_routing(args.openrouter_provider),
         )
 
     if provider == "vllm":
@@ -458,6 +496,20 @@ def make_parser():
         help=(
             "Use top_p (nucleus sampling) 0 < top_p <= 1.0. Can be a single value (.e.g. 0.1), "
             'a list e.g., "0.1,0.9" or a range (e.g, "0.1:1.0:0.2").'
+        ),
+    )
+
+    parser.add_argument(
+        "--openrouter-provider",
+        type=str,
+        default=None,
+        help=(
+            "Pin OpenRouter routing to specific upstream providers, so that "
+            "requests are not load balanced across providers with differing "
+            'quantisations. Either a comma separated list of provider slugs (e.g. "deepinfra" '
+            'or "deepinfra,together"), which disables fallbacks, or a JSON provider object '
+            '(e.g. \'{"order": ["deepinfra"], "quantizations": ["fp8"]}\'). '
+            "OpenRouter only."
         ),
     )
 

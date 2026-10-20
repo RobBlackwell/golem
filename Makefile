@@ -38,6 +38,13 @@ top_p:
 	$(GOLEM) --provider azure --model gpt-35-turbo-0125 --url "$$AZURE_OPENAI_ENDPOINT_2" --key "$$AZURE_OPENAI_API_KEY_2" --top_p "0.5,0.6" "Why is the sky blue" | jq .top_p | tail -n 1 | grep -q 0.6
 	$(GOLEM) --provider azure --model gpt-35-turbo-0125 --url "$$AZURE_OPENAI_ENDPOINT_2" --key "$$AZURE_OPENAI_API_KEY_2" --top_p "0.5:1.0:0.2" "Why is the sky blue" | jq .top_p | tail -n 1 | grep -q 0.9
 
+# OpenRouter load balances across upstream providers, which may differ
+# in quantisation and settings, so benchmarking runs should pin the
+# provider. Not part of `make test` because it depends on a particular
+# model still being served by a particular provider.
+openrouter:
+	$(GOLEM) --provider openrouter --model meta-llama/llama-3.3-70b-instruct --openrouter-provider deepinfra --max_tokens 20 "What is 1 + 2? Only give the final answer" | jq -r '[.request.json.provider.order[0], (.response.provider | ascii_downcase)] | join(" ")' | grep -q "deepinfra deepinfra"
+
 repeat:
 	$(GOLEM) --provider azure --model gpt-35-turbo-0125 --url "$$AZURE_OPENAI_ENDPOINT_2" --key "$$AZURE_OPENAI_API_KEY_2" --repeat "a" "Why is the sky blue" | jq .repeat | grep -q "a"
 	$(GOLEM) --provider azure --model gpt-35-turbo-0125 --url "$$AZURE_OPENAI_ENDPOINT_2" --key "$$AZURE_OPENAI_API_KEY_2" --repeat 1 "Why is the sky blue" | jq .repeat | grep -q 1

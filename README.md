@@ -125,6 +125,34 @@ export OPENROUTER_API_KEY="YOUR-KEY-HERE"
 golem --provider openrouter "Why is the sky blue?"
 ```
 
+By default OpenRouter load balances a request across the upstream
+providers serving a model, and those providers may differ in
+quantisation, context length and sampling behaviour, which makes
+results hard to compare and hard to reproduce. Use
+`--openrouter-provider` to pin a run to particular providers:
+
+``` bash
+golem --provider openrouter --model meta-llama/llama-3.3-70b-instruct \
+  --openrouter-provider deepinfra "Why is the sky blue?"
+```
+
+A comma separated list, e.g. `--openrouter-provider "deepinfra,together"`,
+is tried in order. Fallbacks are disabled, so a request fails rather
+than quietly moving to a provider you did not ask for. For finer
+control, give a JSON object instead, which is sent as the request's
+`provider` field unchanged:
+
+``` bash
+golem --provider openrouter --openrouter-provider \
+  '{"order": ["deepinfra"], "quantizations": ["fp8"]}' "Why is the sky blue?"
+```
+
+See the [OpenRouter provider routing
+documentation](https://openrouter.ai/docs/features/provider-routing)
+for the available fields and provider slugs. The provider that actually
+served a request is recorded in the answers file, so you can check it
+with `jq -r .response.provider`.
+
 ### Claude Code
 
 Golem can benchmark [Claude Code](https://claude.com/claude-code), the

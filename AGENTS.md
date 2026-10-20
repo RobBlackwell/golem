@@ -157,6 +157,61 @@ golem --provider gemini --model gemini-1.5-flash "Why is the sky blue?"
 
 ---
 
+### OpenRouter
+
+**Module:** `openai.py` (the API is OpenAI compatible)
+
+A gateway that routes a request to one of several upstream providers
+serving the same model.
+
+**Configuration:**
+- API Key: Use `--key` or set `OPENROUTER_API_KEY` environment variable
+- Default model: `meta-llama/llama-3.3-8b-instruct:free`
+- Endpoint: `https://openrouter.ai/api/v1/chat/completions`
+
+**Example:**
+```bash
+export OPENROUTER_API_KEY="your-key-here"
+golem --provider openrouter --model meta-llama/llama-3.3-70b-instruct "Why is the sky blue?"
+```
+
+**Provider pinning:**
+
+By default OpenRouter load balances across upstream providers, which
+may differ in quantisation, context length and sampling behaviour. That
+makes unpinned results hard to interpret and hard to reproduce, so pin
+the provider for benchmarking with `--openrouter-provider`:
+
+```bash
+golem --provider openrouter --model meta-llama/llama-3.3-70b-instruct \
+  --openrouter-provider deepinfra "Why is the sky blue?"
+```
+
+A comma separated list is routed in order, with fallbacks disabled, so
+the request fails rather than quietly moving to another provider:
+
+```bash
+golem --provider openrouter --openrouter-provider "deepinfra,together" ...
+```
+
+For the full routing vocabulary, pass a JSON object instead, which is
+sent as the request's `provider` field unaltered:
+
+```bash
+golem --provider openrouter --openrouter-provider \
+  '{"order": ["deepinfra"], "quantizations": ["fp8"], "allow_fallbacks": false}' ...
+```
+
+See [provider routing](https://openrouter.ai/docs/features/provider-routing)
+for the available fields and the provider slugs. The option is ignored,
+with a warning, for every other provider.
+
+Whichever provider actually served a request is reported by OpenRouter
+in the response, so it is recorded in the answers file and can be
+checked with `jq -r .response.provider`.
+
+---
+
 ### Claude Code
 
 **Module:** `claudecode.py`

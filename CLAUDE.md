@@ -73,6 +73,8 @@ Provider names do not map 1:1 onto module names:
 
 It always passes `--setting-sources=` so that no ambient `CLAUDE.md` (cwd, any parent directory, or `~/.claude`) reaches the agent — that would contaminate results and make them irreproducible elsewhere. Treat this as load-bearing, not incidental: `make claudecode-isolation` fails if it regresses. Do not "fix" isolation with `--bare`, which restricts auth to `ANTHROPIC_API_KEY` and breaks an interactively logged-in CLI.
 
+`openrouter` accepts `--openrouter-provider`, which becomes the OpenRouter `provider` routing object in the request body (a comma separated slug list expands to `{"order": [...], "allow_fallbacks": false}`; a JSON string is passed through). Without it OpenRouter load balances across upstream providers with differing quantisations, which is no good for benchmarking. It reaches `ask_openai()` as the keyword argument `provider_routing`, so the other OpenAI-compatible call sites are unaffected.
+
 Arguments are passed **positionally** into `ask_<provider>()`, so adding a parameter means updating the call site in `ask()` and every module that receives it (see the recent `reasoning_effort` addition to `ask_gemini`). Parameters a provider cannot support are dropped in `ask()` with a `logging.warning("Ignoring ...")` rather than an error.
 
 ### Error handling

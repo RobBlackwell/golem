@@ -21,9 +21,14 @@ def ask_openai(
     top_logprobs,
     reasoning_effort,
     n,
+    provider_routing=None,
 ):
     """
     Make a request to the OpenAI API.
+
+    provider_routing is an optional OpenRouter "provider" object used to
+    pin a request to particular upstream providers. It is ignored by
+    other OpenAI compatible APIs.
     """
 
     # See https://platform.openai.com/docs/api-reference/chat/create
@@ -67,6 +72,9 @@ def ask_openai(
 
     if reasoning_effort is not None:
         json_data["reasoning_effort"] = reasoning_effort
+
+    if provider_routing is not None:
+        json_data["provider"] = provider_routing
 
     request = None
     response = None
