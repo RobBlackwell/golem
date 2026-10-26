@@ -47,7 +47,8 @@ def ask_openai(
         "Content-Type": "application/json",
     }
 
-    json_data = {"model": model, "messages": messages}
+    # Some OpenAI compatible servers stream by default unless told otherwise.
+    json_data = {"model": model, "messages": messages, "stream": False}
 
     if temperature is not None:
         json_data["temperature"] = temperature
